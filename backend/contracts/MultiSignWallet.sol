@@ -1,5 +1,4 @@
 //SPDX-License-Identifier: MIT
-// 0x18BAAEf328D9f196dDe5f5901a77F79Ff0A5e0Cb
 
 pragma solidity ^0.8.4;
 
@@ -21,6 +20,7 @@ contract MultiSignWallet {
 
     address[] public owners;
     uint256 public threshold;
+    uint256 internal totalTransaction = 0;
     mapping (address => mapping (uint256 => bool)) internal approvals;
     mapping (uint256 => Transaction) internal transactionArr;
     uint256 internal nextId = 0;
@@ -33,6 +33,11 @@ contract MultiSignWallet {
     function addTransaction (uint256 _amount, address payable _to) public {
         transactionArr[nextId] = (Transaction(nextId, _amount, 0, _to, TransactionState.APPROVAL_PENDING));
         nextId++;
+        totalTransaction++;
+    }
+
+    function getTotal() public view returns (uint256) {
+        return (totalTransaction - 1);
     }
 
     function getTransaction (uint256 _id) public view returns (
