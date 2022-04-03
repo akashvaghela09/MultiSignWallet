@@ -23,7 +23,7 @@ const Header = () => {
             <div className={styles.pageLinkContainer}>
                 <label className={path === "/" ? styles.activeLink : styles.pageLink} onClick={() => handleRoute("")} >Multi-Sign-Wallet</label>
                 <div className={styles.routeContainer}>
-                    <label className={path === "/create-contract" ? styles.activeLink : styles.pageLink} onClick={() => handleRoute("create-contract")} >Apply</label>
+                    <label className={path === "/create-contract" ? styles.activeLink : styles.pageLink} onClick={() => handleRoute("create-contract")} >Create</label>
                     <label className={path === "/contract-list" ? styles.activeLink : styles.pageLink} onClick={() => handleRoute("contract-list")} >List</label>
                     <label className={styles.pageLink} onClick={() => window.open(`https://github.com/akashvaghela09/MultiSignWallet`, '_blank')} >GitHub</label>
                 </div>
@@ -43,7 +43,7 @@ const Header = () => {
                     <GiNotebook 
                         className={path === "/create-contract" ? styles.activeLinkIcon : styles.pageIcon} 
                     />
-                    <p>Apply</p>
+                    <p>Create</p>
                 </label>
                 <label className={styles.iconWrapper} onClick={() => handleRoute("contract-list")} >
                     <FaClipboardList 

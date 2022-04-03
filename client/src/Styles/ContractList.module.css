@@ -5,8 +5,31 @@
     overflow: auto;
     font-size: 30px;
     display: flex;
+    flex-direction: column;
     /* justify-content: center; */
-    /* align-items: center; */
+    align-items: center;
+}
+
+.inputDiv {
+    /* border: 1px solid rgb(88, 36, 36); */
+    margin-top: 30px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.idInput {
+    /* border: 1px solid red; */
+    font-size: 25px;
+    padding: 5px;
+    width: 50%;
+}
+
+.idSubmit {
+    /* border: 1px solid red; */
+    font-size: 25px;
+    padding: 5px;
+    width: 110px;
 }
 
 .cardDiv {
@@ -24,7 +47,7 @@
     padding: 15px;
     /* background-color: black; */
     background-color: #1c1e22;
-
+    height: fit-content;
     color: white;
     margin: 15px;
 }
@@ -55,17 +78,19 @@
     /* border: 1px solid red; */
     font-weight: bold;
     font-size: 22px;
-    margin-left: 10px;
+    margin: 0px 10px;
 }
 
 .buttonDiv {
-    /* border: 1px solid red; */
     display: flex;
     margin: 10px 0px;
 }
 
+.completeBtn, .approveBtn {
+    width: 150px;
+}
+
 .completeBtn {
-    /* border: 1px solid red; */
     font-size: 20px;
     padding: 5px;
     margin-right: 5px;

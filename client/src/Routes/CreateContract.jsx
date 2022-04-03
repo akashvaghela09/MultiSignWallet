@@ -8,7 +8,6 @@ const CreateContract = () => {
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [receiver, setReceiver] = useState("");
 
@@ -19,10 +18,17 @@ const CreateContract = () => {
     const handleSubmit = async () => {
         checkWallet();
 
-        await contract.createTransaction(title, +amount, receiver).then(() => {
-            setTitle("")
+        await contract.addTransaction(+amount, receiver)
+        await contract.getTotal()
+    .then((res) => {
+        console.log(res.toString());
             setAmount("")
             setReceiver("")
+
+            let alertObj = { status: true, msg: `Your Transaction ID is ${res.toString()}` }
+            dispatch(setAlert(alertObj))
+
+        }).then(() => {
             navigate("/contract-list")
         })
     }
@@ -37,11 +43,7 @@ const CreateContract = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.formDiv}>
-                <p className={styles.formTitle}>Create New Contract</p>
-                <div className={styles.formSection}>
-                    <label className={styles.formLabel}>Title</label>
-                    <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="title" className={styles.formInput} />
-                </div>
+                <p className={styles.formTitle}>Create New Transaction</p>
                 <div className={styles.formSection}>
                     <label className={styles.formLabel}>Amount</label>
                     <input value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="amount" className={styles.formInput} />

@@ -11,25 +11,23 @@ const ContractList = () => {
 
     const { contract, isAuth } = useSelector((state) => state.app);
     const [list, setList] = useState([]);
+    const [id, setId] = useState("");
 
     const getData = async () => {
+        // let crrId = +id;
         checkWallet()
 
         let tempArr = []
-        let data = await contract.getAllData();
+        let data = await contract.getTransaction(+id);
+        console.log(data);
+        let tempObj = {}
+        tempObj["id"] = +data[0].toString();
+        tempObj["amount"] = +data[1].toString();
+        tempObj["approvedBy"] = +data[2].toString();
+        tempObj["to"] = data[3];
+        tempObj["state"] = data[4];
 
-        for (let i = 0; i < data.length; i++) {
-            let tempObj = {}
-            tempObj["id"] = +data[i].id.toString();
-            tempObj["title"] = data[i].title;
-            tempObj["amount"] = +data[i].amount.toString();
-            tempObj["workDone"] = data[i].workDone;
-            tempObj["approved"] = data[i].approved;
-            tempObj["receiver"] = data[i].receiver;
-            tempObj["sender"] = data[i].sender;
-
-            tempArr.push(tempObj);
-        }
+        tempArr.push(tempObj);
 
         console.log(tempArr);
         setList([...tempArr])
@@ -42,46 +40,55 @@ const ContractList = () => {
         }
     }
 
-    const handleMarkComplete = async (para) => {
-        await contract.markComplete(para);
-
-        getData();
-    }
-
     const handleApprove = async (para) => {
-        await contract.approve(para, { value: list[para].amount });
+        await contract.approve(para);
 
-        getData()
+        setTimeout(() => {
+            getData();
+        }, 5000);
     }
 
-    useEffect(() => {
-        getData()
-    }, []);
+    const handleFund = async (para) => {
+        console.log(para);
+        await contract.transferAmount(para, { value: list[0].amount });
+
+        setTimeout(() => {
+            getData();
+        }, 5000);
+    }
+
     return (
         <div className={styles.wrapper}>
+            <div className={styles.inputDiv}>
+                <input className={styles.idInput} value={id} onChange={(e) => setId(e.target.value)} placeholder='tx number' />
+                <button className={styles.idSubmit} onClick={() => getData()}>Get</button>
+            </div>
             <div className={styles.cardDiv}>
+                
                 {
                     list.length !== undefined &&
                     list.length >= 0 &&
                     list.map((el) => {
                         return (
                             <div className={styles.card}>
-                                <p className={styles.cardTitle}>{el.title}</p>
                                 <p className={styles.cardAmount}>Amount : {el.amount}</p>
                                 <label className={styles.statuslabel}>
-                                    <p className={styles.statustext1}>Work Done : </p>
-                                    <p className={styles.statustext2}>{el.workDone === true ? "Yes" : "No"}</p>
+                                    Approved By
+                                    <p className={styles.statustext2}>{el.approvedBy}</p> 
+                                    out of
+                                    <p className={styles.statustext2}>3</p> 
+                                    owners
                                 </label>
                                 <div className={styles.buttonDiv}>
                                     {
-                                        el.workDone == false ?
-                                            <button className={styles.completeBtn} onClick={() => handleMarkComplete(el.id)}>Mark Complete</button> :
-                                            <button disabled className={styles.completeBtn} onClick={() => handleMarkComplete(el.id)}>Mark Complete</button>
+                                        el.approvedBy >= 2 ?
+                                        <button disabled className={styles.completeBtn} onClick={() => handleApprove(el.id)}>Approve</button> :
+                                        <button className={styles.completeBtn} onClick={() => handleApprove(el.id)}>Approve</button>
                                     }
                                     {
-                                        el.approved == false ?
-                                            <button className={styles.approveBtn} onClick={() => handleApprove(el.id)}>Approve Fund</button> :
-                                            <button disabled className={styles.approveBtn} onClick={() => handleApprove(el.id)}>Approve Fund</button>
+                                        el.state == 2 ?
+                                        <button disabled className={styles.approveBtn} onClick={() => handleFund(el.id)}>Fund</button> :
+                                        <button className={styles.approveBtn} onClick={() => handleFund(el.id)}>Fund</button>
                                     }
                                 </div>
                             </div>

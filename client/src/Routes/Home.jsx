@@ -22,11 +22,11 @@ const Home = () => {
     return (
         <div className={styles.wrapper}>
             <p className={styles.pageText}>Multi Signer Wallet Dapp</p>
-            <p className={styles.pageText2}>Here you can apply for funds and amount will be transfered based on owner approvals</p>
+            <p className={styles.pageText2}>Here you can create transaction for funds and amount will be transfered based on owner approvals</p>
             <div className={styles.cardDiv}>
                 <div className={styles.card} onClick={() => handleRoute("create-contract")}>
                     <GiNotebook className={styles.cardIcon}/>
-                    <p className={styles.cardText}>Apply</p>
+                    <p className={styles.cardText}>Create</p>
                 </div>
                 <div className={styles.card} onClick={() => handleRoute("contract-list")}>
                     <FaClipboardList className={styles.cardIcon}/>
