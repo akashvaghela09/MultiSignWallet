@@ -1,11 +1,11 @@
 <h1 align="center">
   <img alt="cgapp logo" src="https://vectorified.com/image/ethereum-logo-vector-13.png" width="224px"/><br/>
-  MultiSignWallet 
+  Multi-Sign-Wallet 
   <br/>
   
 <br/>
 </h1>
-<p align="center">Ethereum blockchain based Dapp Integrated with frontend(React) and other necessary tools such as Truffle(for testing) and HardHat(for deployment). </p>
+<p align="center">MultiSignWallet is a Ethereum blockchain based Dapp. where user can create fund request and amount will be transferred based on owner approvals. It's Integrated with frontend(React) and other necessary tools such as Truffle(for testing) and HardHat(for deployment). </p>
 <p align="center">
 <img src="https://img.shields.io/website-up-down-green-red/http/solventx.in.svg" alt="website up"/>
 <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" alt="maintained"/>
@@ -13,7 +13,7 @@
 </p>
 
 
-##  [🌐 Demo](https://solventx.in)
+##  [🌐 Demo](https://multi-sign-wallet.vercel.app)
 
 
 ## 🔧 Tech Stack 
