@@ -1,0 +1,21 @@
+{
+  "name": "multi-sign-wallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd backend && truffle test",
+    "deploy": "cd backend && npx hardhat run scripts/deploy.js --network rinkeby",
+    "start": "cd client && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akashvaghela09/dapp-template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akashvaghela09/dapp-template/issues"
+  },
+  "homepage": "https://github.com/akashvaghela09/dapp-template#readme"
+}
