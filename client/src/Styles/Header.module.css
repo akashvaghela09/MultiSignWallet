@@ -1,0 +1,79 @@
+.wrapper {
+    height: 60px;
+    background-color: #141414;
+    border-bottom: 1px solid #181818;
+    width: 100%;
+    display: flex;
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+}
+
+.pageLinkContainer, .routeContainer{
+    display: flex;
+}
+
+.pageLink, .activeLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(224, 224, 224);
+    margin: 0px 20px;
+    padding: 0px 5px;
+    min-width: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.activeLink {
+    color: #00a8ff;
+}
+
+.bottomWrapper {
+    display: none;
+}
+
+
+@media screen and (max-width: 700px) {
+    .bottomWrapper {
+        height: 70px;
+        background-color: #1a1a1a;
+        border-top: 1px solid #272727;
+        position: fixed;
+        bottom: 0px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .routeContainer {
+        display: none;
+    }
+
+    .pageIcon , .activeLinkIcon{
+        color: rgb(224, 224, 224);
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    .pageIcon ~ p , .activeLinkIcon ~ p{
+        color: rgb(224, 224, 224);
+        padding: 5px;
+    }
+
+    .activeLinkIcon , .activeLinkIcon ~ p{
+        color: #00a8ff;
+    }
+
+    .iconWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+    }
+    
+}

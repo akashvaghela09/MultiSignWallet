@@ -1,0 +1,79 @@
+.wrapper {
+    min-height: calc(100vh - 61px);
+    max-height: calc(100vh - 61px);
+    color: rgb(0, 0, 0);
+    overflow: auto;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formDiv {
+    /* border: 1px solid red; */
+    width: 40vw;
+    margin: 20px;
+    padding: 20px;
+    /* background-color: rgb(34, 34, 34); */
+    background-color: #1c1e22;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.formTitle {
+    /* border: 1px solid red; */
+    font-weight: bold;
+    color: rgb(214, 214, 214);
+}
+
+.formSection {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+}
+
+.formLabel {
+    /* border: 1px solid red; */
+    font-size: 25px;
+    color: rgb(218, 218, 218);
+}
+
+.formInput {
+    /* border: 1px solid red; */
+    font-size: 25px;
+    padding: 5px;
+}
+
+.submitDiv {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+}
+
+.submitButton {
+    /* border: 1px solid red; */
+    /* border-radius: 8px; */
+    padding: 7px 30px;
+    font-size: 25px;
+    cursor: pointer;
+    /* background-color: rgb(7, 7, 7); */
+    /* border: 2px solid rgb(7, 7, 7); */
+    /* color: rgb(226, 226, 226); */
+}
+
+/* .submitButton:hover {
+    background-color: rgb(15, 15, 15);
+    border: 2px solid rgb(41, 41, 41);
+} */
+
+@media screen and (max-width: 600px) {
+    .formDiv {
+        width: 70vw;
+        margin-bottom: 130px;
+    }
+    
+    .wrapper {
+        align-items: unset;
+    }
+}
